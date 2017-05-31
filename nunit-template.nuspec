@@ -17,6 +17,6 @@
     </packageTypes>
   </metadata>
   <files>
-    <file src="content/**" target="" />
+    <file src="Content/**" target="" />
   </files>
 </package>
