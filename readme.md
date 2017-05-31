@@ -1,5 +1,9 @@
-NUnit 3 Project Template for `dotnet new` command
-=================================================
+NUnit 3 Test Project Template for `dotnet new` CLI
+==================================================
+
+|              | Status
+|--------------|:--------------:
+| nuget        | [![NUnit 3 Test Project Template for dotnet-new CLI](https://buildstats.info/nuget/NUnit3.DotNetNew.Template)](https://www.nuget.org/packages/NUnit3.DotNetNew.Template/)
 
 This repository contains a set of project templates to be used when creating projects from .NET Core `dotnet new` command line interface.
 
