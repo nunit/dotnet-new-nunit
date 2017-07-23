@@ -13,7 +13,7 @@
     "type": "project"
   },
   "sourceName": "Company.TestProject1",
-  "preferNameDirectory":"true",
+  "preferNameDirectory": true,
   "symbols": {
     "TargetFrameworkOverride": {
       "type": "parameter",
