@@ -5,7 +5,8 @@
   "name": "NUnit 3 Test Project",
   "generatorVersions": "[1.0.0.0-*)",
   "description": "A project that contains NUnit tests that can run on .NET Core on Windows, Linux and macOS",
-  "identity": "NUnit3.DotNetNew.Template",
+  "groupIdentity": "NUnit3.DotNetNew.Template",
+  "identity": "NUnit3.DotNetNew.Template.CSharp",
   "shortName": "nunit",
   "tags": {
     "language": "C#",
