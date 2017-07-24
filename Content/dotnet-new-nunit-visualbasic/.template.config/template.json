@@ -5,14 +5,15 @@
   "name": "NUnit 3 Test Project",
   "generatorVersions": "[1.0.0.0-*)",
   "description": "A project that contains NUnit tests that can run on .NET Core on Windows, Linux and macOS",
-  "identity": "NUnit3.DotNetNew.Template",
+  "groupIdentity": "NUnit3.DotNetNew.Template",
+  "identity": "NUnit3.DotNetNew.Template.VisualBasic",
   "shortName": "nunit",
   "tags": {
-    "language": "C#",
+    "language": "VB",
     "type": "project"
   },
   "sourceName": "Company.TestProject1",
-  "preferNameDirectory":"true",
+  "preferNameDirectory": true,
   "symbols": {
     "TargetFrameworkOverride": {
       "type": "parameter",
@@ -60,10 +61,10 @@
     }
   },
   "primaryOutputs": [
-    { "path": "Company.TestProject1.csproj" },
+    { "path": "Company.TestProject1.vbproj" },
     {
       "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
-      "path": "UnitTest1.cs"
+      "path": "UnitTest1.vb"
     }
   ],
   "defaultName": "TestProject1",
