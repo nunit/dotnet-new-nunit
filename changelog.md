@@ -1,3 +1,10 @@
+09 November 2017, v1.2.0
+------------------------
+
+- update nunit dependency to v3.8.1
+- update NUnit3TestAdapter dependency to v3.9.0
+- use Microsoft.NET.Test.Sdk v15.3.0
+
 24 July 2017, v1.1.0
 --------------------
 
