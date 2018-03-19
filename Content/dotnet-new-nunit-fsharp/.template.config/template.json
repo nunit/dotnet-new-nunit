@@ -44,6 +44,14 @@
           "description": "Target netcoreapp2.1"
         },
         {
+          "choice": "net35",
+          "description": "Target net35"
+        },
+        {
+          "choice": "net40",
+          "description": "Target net40"
+        },
+        {
           "choice": "net45",
           "description": "Target net45"
         },

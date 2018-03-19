@@ -26,6 +26,12 @@ build_script:
   - dotnet new nunit -n VBasicNetCore21  --framework netcoreapp2.1 -lang vb
 
   # unfortunately, F# under full .NET Framework issues a compilation error, the issue is in F# compiler
+  - dotnet new nunit -n CSharpNet35  --framework net35 -lang c#
+  - dotnet new nunit -n VBasicNet35  --framework net35 -lang vb
+
+  - dotnet new nunit -n CSharpNet40  --framework net40 -lang c#
+  - dotnet new nunit -n VBasicNet40  --framework net40 -lang vb
+
   - dotnet new nunit -n CSharpNet45  --framework net45 -lang c#
   - dotnet new nunit -n VBasicNet45  --framework net45 -lang vb
 
@@ -65,6 +71,14 @@ test_script:
   - dotnet test CSharpNetCore21
   - dotnet test FSharpNetCore21
   - dotnet test VBasicNetCore21
+
+  - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" CSharpNet35
+  - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" VBasicNet35
+  - dotnet test CSharpNet35 --no-build
+  - dotnet test VBasicNet35 --no-build
+
+  - dotnet test CSharpNet40
+  - dotnet test VBasicNet40
 
   - dotnet test CSharpNet45
   - dotnet test VBasicNet45
