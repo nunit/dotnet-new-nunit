@@ -1,0 +1,75 @@
+language: csharp
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      env: CURRENTOS=UNDER_LINUX
+      mono: latest
+    - os: osx
+      osx_image: xcode7.1
+      env: CURRENTOS=UNDER_MACOSX
+      mono: none
+script:
+  # installing .NET Core SDK and Mono
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main" > /etc/apt/sources.list.d/dotnetdev.list'; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get install apt-transport-https; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get update; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get install dotnet-dev-1.1.8 dotnet-sdk-2.1.300-preview1-008174 mono-devel mono-complete; fi
+  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-dev-osx-x64.1.1.8.pkg https://download.microsoft.com/download/6/5/F/65F1653E-F835-4DE3-BB36-F324D3925F32/dotnet-dev-osx-x64.1.1.8.pkg; fi
+  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-sdk-2.1.300-preview1-008174-osx-x64.pkg https://download.microsoft.com/download/D/7/8/D788D3CD-44C4-487D-829B-413E914FB1C3/dotnet-sdk-2.1.300-preview1-008174-osx-x64.pkg; fi
+  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then sudo installer -pkg /tmp/dotnet-dev-osx-x64.1.1.8.pkg -target /; fi
+  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then sudo installer -pkg /tmp/dotnet-sdk-2.1.300-preview1-008174-osx-x64.pkg -target /; fi
+  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then ln -s /usr/local/share/dotnet/dotnet /usr/local/bin/; fi
+
+  # install dotnet new nunit template
+  - dotnet new -i ./Content
+
+  # creating projects from templates
+  - dotnet new nunit -n CSharpNet1   --framework netcoreapp1.0 -lang c#; dotnet test CSharpNet1;
+  - dotnet new nunit -n FSharpNet1   --framework netcoreapp1.0 -lang f#; dotnet test FSharpNet1;
+  - dotnet new nunit -n VBasicNet1   --framework netcoreapp1.0 -lang vb; dotnet test VBasicNet1;
+
+  - dotnet new nunit -n CSharpNet11  --framework netcoreapp1.1 -lang c#; dotnet test CSharpNet11;
+  - dotnet new nunit -n FSharpNet11  --framework netcoreapp1.1 -lang f#; dotnet test FSharpNet11;
+  - dotnet new nunit -n VBasicNet11  --framework netcoreapp1.1 -lang vb; dotnet test VBasicNet11;
+
+  - dotnet new nunit -n CSharpNet2   --framework netcoreapp2.0 -lang c#; dotnet test CSharpNet2;
+  - dotnet new nunit -n FSharpNet2   --framework netcoreapp2.0 -lang f#; dotnet test FSharpNet2;
+  - dotnet new nunit -n VBasicNet2   --framework netcoreapp2.0 -lang vb; dotnet test VBasicNet2;
+
+  - dotnet new nunit -n CSharpNet21  --framework netcoreapp2.1 -lang c#; dotnet test CSharpNet21;
+  - dotnet new nunit -n FSharpNet21  --framework netcoreapp2.1 -lang f#; dotnet test FSharpNet21;
+  - dotnet new nunit -n VBasicNet21  --framework netcoreapp2.1 -lang vb; dotnet test VBasicNet21;
+
+  # specify FrameworkPathOverride to run tests under Mono
+  - export FrameworkPathOverride=/usr/lib/mono/4.7-api
+
+  # run tests
+  # unfortunately, F# under full .NET Framework issues a compilation error, the issue is in F# compiler, disable tests for now
+  # unfortunately, Mono under Mac OSX could not resolve .NET Framework assemblies and issues many errors, disable tests for now
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet45  --framework net45 -lang c#; dotnet test CSharpNet45; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet45  --framework net45 -lang vb; dotnet test VBasicNet45; fi
+
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet451 --framework net451 -lang c#; dotnet test CSharpNet451; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet451 --framework net451 -lang vb; dotnet test VBasicNet451; fi
+
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet452 --framework net452 -lang c#; dotnet test CSharpNet452; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet452 --framework net452 -lang vb; dotnet test VBasicNet452; fi
+
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet46  --framework net46 -lang c#; dotnet test CSharpNet46; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet46  --framework net46 -lang vb; dotnet test VBasicNet46; fi
+
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet461 --framework net461 -lang c#; dotnet test CSharpNet461; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet461 --framework net461 -lang vb; dotnet test VBasicNet461; fi
+
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet462 --framework net462 -lang c#; dotnet test CSharpNet462; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet462 --framework net462 -lang vb; dotnet test VBasicNet462; fi
+
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet47 --framework net47 -lang c#; dotnet test CSharpNet47; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet47 --framework net47 -lang vb; dotnet test VBasicNet47; fi
+
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet471 --framework net471 -lang c#; dotnet test CSharpNet471; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet471 --framework net471 -lang vb; dotnet test VBasicNet471; fi
