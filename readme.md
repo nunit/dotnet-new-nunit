@@ -1,9 +1,11 @@
 NUnit 3 Test Project Template for `dotnet new` CLI
 ==================================================
 
-|              | Status
-|--------------|:--------------:
-| nuget        | [![NUnit 3 Test Project Template for dotnet-new CLI](https://buildstats.info/nuget/NUnit3.DotNetNew.Template)](https://www.nuget.org/packages/NUnit3.DotNetNew.Template/)
+|                 | Status
+|-----------------|:--------------:
+| nuget           | [![NUnit 3 Test Project Template for dotnet-new CLI](https://buildstats.info/nuget/NUnit3.DotNetNew.Template)](https://www.nuget.org/packages/NUnit3.DotNetNew.Template/)
+| Windows         | [![Build status](https://ci.appveyor.com/api/projects/status/pb11n8ynftdnmlu4/branch/master?svg=true)](https://ci.appveyor.com/project/halex2005/dotnet-new-nunit-g8axg/branch/master)
+| Linux & Mac OSX | [![Build Status](https://travis-ci.org/nunit/dotnet-new-nunit.svg?branch=master)](https://travis-ci.org/nunit/dotnet-new-nunit)
 
 This repository contains a set of project templates to be used when creating projects from .NET Core `dotnet new` command line interface (C#, F# and Visual Basic project templates are supported).
 
