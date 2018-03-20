@@ -38,6 +38,50 @@
         {
           "choice": "netcoreapp2.0",
           "description": "Target netcoreapp2.0"
+        },
+        {
+          "choice": "netcoreapp2.1",
+          "description": "Target netcoreapp2.1"
+        },
+        {
+          "choice": "net35",
+          "description": "Target net35"
+        },
+        {
+          "choice": "net40",
+          "description": "Target net40"
+        },
+        {
+          "choice": "net45",
+          "description": "Target net45"
+        },
+        {
+          "choice": "net451",
+          "description": "Target net451"
+        },
+        {
+          "choice": "net452",
+          "description": "Target net452"
+        },
+        {
+          "choice": "net46",
+          "description": "Target net46"
+        },
+        {
+          "choice": "net461",
+          "description": "Target net461"
+        },
+        {
+          "choice": "net462",
+          "description": "Target net462"
+        },
+        {
+          "choice": "net47",
+          "description": "Target net47"
+        },
+        {
+          "choice": "net471",
+          "description": "Target net471"
         }
       ],
       "replaces": "netcoreapp2.0",

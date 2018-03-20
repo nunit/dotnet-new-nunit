@@ -3,7 +3,7 @@
   <metadata>
     <id>NUnit3.DotNetNew.Template</id>
     <title>NUnit 3 template for dotnet-new</title>
-    <version>1.3.0</version>
+    <version>1.4.0</version>
     <description>Project and item templates containing basic NUnit 3 Test Project.</description>
     <tags>NUnit dotnet core</tags>
     <authors>akharlov</authors>
@@ -16,9 +16,12 @@
       <packageType name="Template" />
     </packageTypes>
     <releaseNotes>
-- use nunit v3.9.0
-- use NUnit3TestAdapter v3.9.0
-- use Microsoft.NET.Test.Sdk v15.5.0
+- update nunit dependency to v3.10.1
+- update NUnit3TestAdapter dependency to v3.10.0
+- update Microsoft.NET.Test.Sdk dependency to v15.6.1
+- add new `--framework` supported parameters:
+    + .NET Framework versions (net35, net40, net45, net451, net452, net46, net461, net462, net47, net471)
+    + .NET Core 2.1 (netcoreapp2.1)
     </releaseNotes>
   </metadata>
   <files>

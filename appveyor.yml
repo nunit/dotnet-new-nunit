@@ -1,0 +1,108 @@
+image: Visual Studio 2017 Preview
+version: 1.0.{build}
+platform:
+  - Any CPU
+configuration:
+  - Release
+build_script:
+  # todo: nuget pack and install templates from nuget package
+  - nuget pack nunit-template.nuspec
+  - dotnet new -i ./Content
+
+  - dotnet new nunit -n CSharpNetCore1   --framework netcoreapp1.0 -lang c#
+  - dotnet new nunit -n FSharpNetCore1   --framework netcoreapp1.0 -lang f#
+  - dotnet new nunit -n VBasicNetCore1   --framework netcoreapp1.0 -lang vb
+
+  - dotnet new nunit -n CSharpNetCore11  --framework netcoreapp1.1 -lang c#
+  - dotnet new nunit -n FSharpNetCore11  --framework netcoreapp1.1 -lang f#
+  - dotnet new nunit -n VBasicNetCore11  --framework netcoreapp1.1 -lang vb
+
+  - dotnet new nunit -n CSharpNetCore2   --framework netcoreapp2.0 -lang c#
+  - dotnet new nunit -n FSharpNetCore2   --framework netcoreapp2.0 -lang f#
+  - dotnet new nunit -n VBasicNetCore2   --framework netcoreapp2.0 -lang vb
+
+  - dotnet new nunit -n CSharpNetCore21  --framework netcoreapp2.1 -lang c#
+  - dotnet new nunit -n FSharpNetCore21  --framework netcoreapp2.1 -lang f#
+  - dotnet new nunit -n VBasicNetCore21  --framework netcoreapp2.1 -lang vb
+
+  # unfortunately, F# under full .NET Framework issues a compilation error, the issue is in F# compiler
+  - dotnet new nunit -n CSharpNet35  --framework net35 -lang c#
+  - dotnet new nunit -n VBasicNet35  --framework net35 -lang vb
+
+  - dotnet new nunit -n CSharpNet40  --framework net40 -lang c#
+  - dotnet new nunit -n VBasicNet40  --framework net40 -lang vb
+
+  - dotnet new nunit -n CSharpNet45  --framework net45 -lang c#
+  - dotnet new nunit -n VBasicNet45  --framework net45 -lang vb
+
+  - dotnet new nunit -n CSharpNet451 --framework net451 -lang c#
+  - dotnet new nunit -n VBasicNet451 --framework net451 -lang vb
+
+  - dotnet new nunit -n CSharpNet452 --framework net452 -lang c#
+  - dotnet new nunit -n VBasicNet452 --framework net452 -lang vb
+
+  - dotnet new nunit -n CSharpNet46  --framework net46 -lang c#
+  - dotnet new nunit -n VBasicNet46  --framework net46 -lang vb
+
+  - dotnet new nunit -n CSharpNet461 --framework net461 -lang c#
+  - dotnet new nunit -n VBasicNet461 --framework net461 -lang vb
+
+  - dotnet new nunit -n CSharpNet462 --framework net462 -lang c#
+  - dotnet new nunit -n VBasicNet462 --framework net462 -lang vb
+
+  - dotnet new nunit -n CSharpNet47 --framework net47 -lang c#
+  - dotnet new nunit -n VBasicNet47 --framework net47 -lang vb
+
+  - dotnet new nunit -n CSharpNet471 --framework net471 -lang c#
+  - dotnet new nunit -n VBasicNet471 --framework net471 -lang vb
+test_script:
+  - dotnet test CSharpNetCore1
+  - dotnet test FSharpNetCore1
+  - dotnet test VBasicNetCore1
+
+  - dotnet test CSharpNetCore11
+  - dotnet test FSharpNetCore11
+  - dotnet test VBasicNetCore11
+
+  - dotnet test CSharpNetCore2
+  - dotnet test FSharpNetCore2
+  - dotnet test VBasicNetCore2
+
+  - dotnet test CSharpNetCore21
+  - dotnet test FSharpNetCore21
+  - dotnet test VBasicNetCore21
+
+  - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" CSharpNet35
+  - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" VBasicNet35
+  - dotnet test CSharpNet35 --no-build
+  - dotnet test VBasicNet35 --no-build
+
+  - dotnet test CSharpNet40
+  - dotnet test VBasicNet40
+
+  - dotnet test CSharpNet45
+  - dotnet test VBasicNet45
+
+  - dotnet test CSharpNet451
+  - dotnet test VBasicNet451
+
+  - dotnet test CSharpNet452
+  - dotnet test VBasicNet452
+
+  - dotnet test CSharpNet46
+  - dotnet test VBasicNet46
+
+  - dotnet test CSharpNet461
+  - dotnet test VBasicNet461
+
+  - dotnet test CSharpNet462
+  - dotnet test VBasicNet462
+
+  - dotnet test CSharpNet47
+  - dotnet test VBasicNet47
+
+  - dotnet test CSharpNet471
+  - dotnet test VBasicNet471
+
+artifacts:
+  - path: '*.nupkg'
