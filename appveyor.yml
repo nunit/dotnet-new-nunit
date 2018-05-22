@@ -55,6 +55,9 @@ build_script:
 
   - dotnet new nunit -n CSharpNet471 --framework net471 -lang c#
   - dotnet new nunit -n VBasicNet471 --framework net471 -lang vb
+
+  - dotnet new nunit -n CSharpNet472 --framework net472 -lang c#
+  - dotnet new nunit -n VBasicNet472 --framework net472 -lang vb
 test_script:
   - dotnet test CSharpNetCore1
   - dotnet test FSharpNetCore1
@@ -103,6 +106,9 @@ test_script:
 
   - dotnet test CSharpNet471
   - dotnet test VBasicNet471
+
+  - dotnet test CSharpNet472
+  - dotnet test VBasicNet472
 
 artifacts:
   - path: '*.nupkg'

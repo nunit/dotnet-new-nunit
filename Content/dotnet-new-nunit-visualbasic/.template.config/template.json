@@ -82,6 +82,10 @@
         {
           "choice": "net471",
           "description": "Target net471"
+        },
+        {
+          "choice": "net472",
+          "description": "Target net472"
         }
       ],
       "replaces": "netcoreapp2.0",

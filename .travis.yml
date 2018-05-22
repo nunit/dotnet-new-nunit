@@ -79,3 +79,6 @@ script:
 
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet471 --framework net471 -lang c#; dotnet test CSharpNet471; fi
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet471 --framework net471 -lang vb; dotnet test VBasicNet471; fi
+
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet472 --framework net472 -lang c#; dotnet test CSharpNet472; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet472 --framework net472 -lang vb; dotnet test VBasicNet472; fi
