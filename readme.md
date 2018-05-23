@@ -7,26 +7,31 @@ NUnit 3 Test Project Template for `dotnet new` CLI
 | Windows         | [![Build status](https://ci.appveyor.com/api/projects/status/pb11n8ynftdnmlu4/branch/master?svg=true)](https://ci.appveyor.com/project/halex2005/dotnet-new-nunit-g8axg/branch/master)
 | Linux & Mac OSX | [![Build Status](https://travis-ci.org/nunit/dotnet-new-nunit.svg?branch=master)](https://travis-ci.org/nunit/dotnet-new-nunit)
 
-This repository contains a set of project templates to be used when creating projects from .NET Core `dotnet new` command line interface (C#, F# and Visual Basic project templates are supported).
+This repository contains a set of project and item templates to be used when creating projects from .NET Core `dotnet new` command line interface (C#, F# and Visual Basic project templates are supported).
 
 Currently, it contains a project template for a NUnit test library targeting .NET Core.
 
-Usage
------
+Installation
+------------
 
-To install NUnit Project Template from nuget, run command:
+To install NUnit Project and Item Templates from nuget, run command:
 
 ```
 dotnet new -i NUnit3.DotNetNew.Template
 ```
 
-To create a NUnit library project from template, run:
+Usage
+-----
+
+### Project Templates
+
+To create new NUnit library project from template, run:
 
 ```
 dotnet new nunit
 ```
 
-By default it will create NUnit Test Project targeted to `netcoreapp2.0` (which is in preview for now).
+By default it will create NUnit Test Project targeted to `netcoreapp2.0`.
 You can specify `--framework` command line switch to change targeting:
 
 ```
@@ -44,6 +49,7 @@ If you'd like to create F# or VB test project, you can specify project language 
 
 ```
 dotnet new nunit -lang F#
+dotnet new nunit -lang VB
 ```
 
 > Note that VB doesn't support dashes in project name. If you have `dotnet-new-nunit-example.vbproj` test project, then you'll get compiler error like this:
@@ -52,12 +58,44 @@ dotnet new nunit -lang F#
 >
 > To workaround this compiler error, rename your project so that it contained no dashes.
 
-For more info on `dotnet new` CLI, please see [documentation](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet).
+### Item templates
 
-For more info on NUnit testing framework, please see its project or nunit.org website.
+To create new C# NUnit test fixture class, run:
+
+```
+dotnet new nunit --type item
+```
+
+You can specify filename of test fixture class with `-n` or `--name` parameter:
+
+```
+dotnet new unit --type item -n MyTestFixture
+```
+
+Unfortunately, this command will create file `MyTestFixture\MyTestFixture.cs`
+relatively of current directory.
+
+You can create file `MyTestFixture.cs` in current
+directory by overriding output directory with `-o` or `--output` parameter:
+
+```
+dotnet new nunit --type item -n MyTestFixture -o .
+```
+
+If you'd like to create F# or VB test fixture class, you can specify project language with `-lang` switch:
+
+```
+dotnet new nunit --type item -lang F#
+dotnet new nunit --type item -lang VB
+```
+
+### More information
+
+For more info on `dotnet new` CLI, please read [the documentation](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet).
+
+For more info on NUnit testing framework, see [nunit.org](http://nunit.org/) website.
 
 License
 -------
 
-This packages is distributed under conditions of [MIT license](LICENSE).
-
+This package is distributed under conditions of [MIT license](LICENSE).

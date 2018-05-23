@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Aleksei Kharlov aka halex2005 (codeofclimber.ru)",
+  "classifications": [ "Test", "NUnit" ],
+  "name": "NUnit 3 Test Item",
+  "generatorVersions": "[1.0.0.0-*)",
+  "description": "A item that contains NUnit tests",
+  "groupIdentity": "NUnit3.DotNetNew.Template",
+  "identity": "NUnit3.DotNetNew.ItemTemplate.CSharp",
+  "shortName": "nunit",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "sourceName": "UnitTest1",
+  "preferNameDirectory": true,
+  "primaryOutputs": [
+    { "path": "UnitTest1.cs" }
+  ]
+}
