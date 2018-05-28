@@ -1,4 +1,4 @@
-namespace Company.TestProject1.Tests
+namespace Tests
 
 open NUnit.Framework
 

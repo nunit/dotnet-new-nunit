@@ -40,9 +40,15 @@ script:
   - dotnet new nunit -n FSharpNetCore2   --framework netcoreapp2.0 -lang f#; dotnet test FSharpNetCore2;
   - dotnet new nunit -n VBasicNetCore2   --framework netcoreapp2.0 -lang vb; dotnet test VBasicNetCore2;
 
-  - dotnet new nunit -n CSharpNetCore21  --framework netcoreapp2.1 -lang c#; dotnet test CSharpNetCore21;
-  - dotnet new nunit -n FSharpNetCore21  --framework netcoreapp2.1 -lang f#; dotnet test FSharpNetCore21;
-  - dotnet new nunit -n VBasicNetCore21  --framework netcoreapp2.1 -lang vb; dotnet test VBasicNetCore21;
+  - dotnet new nunit -n CSharpNetCore21  --framework netcoreapp2.1 -lang c#;
+  - dotnet new nunit --type item -n NewTestFixture -o CSharpNetCore21 -lang c#;
+  - dotnet test CSharpNetCore21;
+  - dotnet new nunit -n FSharpNetCore21  --framework netcoreapp2.1 -lang f#;
+  - dotnet new nunit --type item -n NewTestFixture -o FSharpNetCore21 -lang f#;
+  - dotnet test FSharpNetCore21;
+  - dotnet new nunit -n VBasicNetCore21  --framework netcoreapp2.1 -lang vb;
+  - dotnet new nunit --type item -n NewTestFixture -o VBasicNetCore21 -lang vb;
+  - dotnet test VBasicNetCore21;
 
   # specify FrameworkPathOverride to run tests under Mono
   - export FrameworkPathOverride=/usr/lib/mono/4.7-api

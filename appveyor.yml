@@ -24,6 +24,9 @@ build_script:
   - dotnet new nunit -n CSharpNetCore21  --framework netcoreapp2.1 -lang c#
   - dotnet new nunit -n FSharpNetCore21  --framework netcoreapp2.1 -lang f#
   - dotnet new nunit -n VBasicNetCore21  --framework netcoreapp2.1 -lang vb
+  - dotnet new nunit --type item -n NewTestFixture -o CSharpNetCore21 -lang c#
+  - dotnet new nunit --type item -n NewTestFixture -o FSharpNetCore21 -lang f#
+  - dotnet new nunit --type item -n NewTestFixture -o VBasicNetCore21 -lang vb
 
   # unfortunately, F# under full .NET Framework issues a compilation error, the issue is in F# compiler
   - dotnet new nunit -n CSharpNet35  --framework net35 -lang c#
