@@ -69,7 +69,7 @@ dotnet new nunit --type item
 You can specify filename of test fixture class with `-n` or `--name` parameter:
 
 ```
-dotnet new unit --type item -n MyTestFixture
+dotnet new nunit --type item -n MyTestFixture
 ```
 
 Unfortunately, this command will create file `MyTestFixture\MyTestFixture.cs`
