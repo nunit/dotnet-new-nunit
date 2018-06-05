@@ -1,3 +1,11 @@
+05 May 2018, v1.5.0
+-------------------
+
+- update Microsoft.NET.Test.Sdk dependency to v15.7.2
+- add new `--framework` supported parameters:
+    + .NET Framework version net472
+- add NUnit test fixture item templates
+
 19 March 2018, v1.4.0
 ---------------------
 
