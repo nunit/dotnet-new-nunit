@@ -1,4 +1,4 @@
-24 May 2018, v1.5.0
+05 May 2018, v1.5.0
 -------------------
 
 - update Microsoft.NET.Test.Sdk dependency to v15.7.2
