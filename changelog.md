@@ -1,3 +1,9 @@
+07 May 2018, v1.5.1
+-------------------
+
+- fixing regression: `dotnet new nunit` doesn't create project (requiring `--type project` parameter)
+    + item templates now has `nunit-test` short name
+
 05 May 2018, v1.5.0
 -------------------
 
