@@ -19,6 +19,7 @@
     }
   },
   "usageExamples": [
-    "--framework netcoreapp2.0"
+    "-f net472",
+    "-f netcoreapp2.1"
   ]
 }

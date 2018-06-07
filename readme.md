@@ -60,16 +60,16 @@ dotnet new nunit -lang VB
 
 ### Item templates
 
-To create new C# NUnit test fixture class, run:
+To create new C# NUnit test fixture class (with name of folder where it will be created), run:
 
 ```
-dotnet new nunit --type item
+dotnet new nunit-test
 ```
 
 You can specify filename of test fixture class with `-n` or `--name` parameter:
 
 ```
-dotnet new nunit --type item -n MyTestFixture
+dotnet new nunit-test -n MyTestFixture
 ```
 
 Unfortunately, this command will create file `MyTestFixture\MyTestFixture.cs`
@@ -79,14 +79,14 @@ You can create file `MyTestFixture.cs` in current
 directory by overriding output directory with `-o` or `--output` parameter:
 
 ```
-dotnet new nunit --type item -n MyTestFixture -o .
+dotnet new nunit-test -n MyTestFixture -o .
 ```
 
 If you'd like to create F# or VB test fixture class, you can specify project language with `-lang` switch:
 
 ```
-dotnet new nunit --type item -lang F#
-dotnet new nunit --type item -lang VB
+dotnet new nunit-test -lang F#
+dotnet new nunit-test -lang VB
 ```
 
 ### More information
