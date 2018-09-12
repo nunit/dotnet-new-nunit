@@ -1,3 +1,9 @@
+12 September 2018, v1.5.2
+-------------------------
+
+- open UnitTest.cs file when project created in Visual Studio (thanks to @jmarolf, #14)
+- update Microsoft.NET.Test.Sdk dependency to v15.8.0
+
 07 May 2018, v1.5.1
 -------------------
 
