@@ -89,8 +89,8 @@
           "description": "Target net472"
         }
       ],
-      "replaces": "netcoreapp2.0",
-      "defaultValue": "netcoreapp2.0"
+      "replaces": "netcoreapp2.1",
+      "defaultValue": "netcoreapp2.1"
     },
     "EnablePack": {
       "type": "parameter",

@@ -31,7 +31,7 @@ To create new NUnit library project from template, run:
 dotnet new nunit
 ```
 
-By default it will create NUnit Test Project targeted to `netcoreapp2.0`.
+By default it will create NUnit Test Project targeted to `netcoreapp2.1`.
 You can specify `--framework` command line switch to change targeting:
 
 ```
