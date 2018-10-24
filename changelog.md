@@ -1,3 +1,8 @@
+23 October 2018, v1.5.3
+-----------------------
+
+- Update all project templates to default to .NET Core 2.1 (netcoreapp2.1). Other frameworks can still be selected with the `--framework` command line option.
+
 12 September 2018, v1.5.2
 -------------------------
 
