@@ -1,3 +1,15 @@
+19 November 2018, 1.6.0
+-----------------------
+
+- add new `--framework` supported parameters:
+    + .NET Core 2.2 version netcoreapp2.2
+    + .NET Core 3.0 version netcoreapp3.0
+    + .NET Framework 4.8 version net48
+- update all project templates to default to .NET Core 2.2 (netcoreapp2.2). Other frameworks can still be selected with the `--framework` command line option.
+- update nunit dependency to v3.11.0
+- update NUnit3TestAdapter dependency to v3.11.0
+- update Microsoft.NET.Test.Sdk dependency to v15.9.0
+
 23 October 2018, v1.5.3
 -----------------------
 

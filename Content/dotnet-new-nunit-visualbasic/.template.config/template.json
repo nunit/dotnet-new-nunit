@@ -45,6 +45,14 @@
           "description": "Target netcoreapp2.1"
         },
         {
+          "choice": "netcoreapp2.2",
+          "description": "Target netcoreapp2.2"
+        },
+        {
+          "choice": "netcoreapp3.0",
+          "description": "Target netcoreapp3.0"
+        },
+        {
           "choice": "net35",
           "description": "Target net35"
         },
@@ -87,10 +95,14 @@
         {
           "choice": "net472",
           "description": "Target net472"
+        },
+        {
+          "choice": "net48",
+          "description": "Target net48"
         }
       ],
       "replaces": "netcoreapp2.1",
-      "defaultValue": "netcoreapp2.1"
+      "defaultValue": "netcoreapp2.2"
     },
     "EnablePack": {
       "type": "parameter",
