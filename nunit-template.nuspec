@@ -3,7 +3,7 @@
   <metadata>
     <id>NUnit3.DotNetNew.Template</id>
     <title>NUnit 3 template for dotnet-new</title>
-    <version>1.5.3</version>
+    <version>1.6.0</version>
     <description>Project and item templates containing basic NUnit 3 Test Project.</description>
     <tags>NUnit dotnet core</tags>
     <authors>akharlov</authors>
@@ -16,9 +16,9 @@
       <packageType name="Template" />
     </packageTypes>
     <releaseNotes>
-- NUnit v3.10.1
-- NUnit3TestAdapter v3.10.0
-- Microsoft.NET.Test.Sdk v15.8.0
+- NUnit v3.11.0
+- NUnit3TestAdapter v3.11.0
+- Microsoft.NET.Test.Sdk v15.9.0
     </releaseNotes>
   </metadata>
   <files>

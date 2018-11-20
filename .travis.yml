@@ -24,8 +24,16 @@ script:
   - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then sudo installer -pkg /tmp/dotnet-sdk-2.1.300-osx-x64.pkg -target /; fi
   - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then ln -s /usr/local/share/dotnet/dotnet /usr/local/bin/; fi
 
+  - wget --retry-connrefused --waitretry=1 https://dot.net/v1/dotnet-install.sh
+  - chmod +x dotnet-install.sh
+  - sudo ./dotnet-install.sh  --channel release/2.2.1xx
+  - sudo ./dotnet-install.sh  --channel master
+
   # install dotnet new nunit template
+  - dotnet --info
   - dotnet new -i ./Content
+  - ~/.dotnet/dotnet --info
+  - sudo ~/.dotnet/dotnet new -i ./Content
 
   # creating projects from templates
   - dotnet new nunit -n CSharpNetCore1   --framework netcoreapp1.0 -lang c#; dotnet test CSharpNetCore1;
@@ -49,6 +57,14 @@ script:
   - dotnet new nunit -n VBasicNetCore21  --framework netcoreapp2.1 -lang vb;
   - dotnet new nunit-test -n NewTestFixture -o VBasicNetCore21 -lang vb;
   - dotnet test VBasicNetCore21;
+
+  - ~/.dotnet/dotnet new nunit -n CSharpNetCore22   --framework netcoreapp2.2 -lang c#; ~/.dotnet/dotnet test CSharpNetCore22
+  - ~/.dotnet/dotnet new nunit -n FSharpNetCore22   --framework netcoreapp2.2 -lang f#; ~/.dotnet/dotnet test FSharpNetCore22
+  - ~/.dotnet/dotnet new nunit -n VBasicNetCore22   --framework netcoreapp2.2 -lang vb; ~/.dotnet/dotnet test VBasicNetCore22
+
+  - ~/.dotnet/dotnet new nunit -n CSharpNetCore30   --framework netcoreapp3.0 -lang c#; ~/.dotnet/dotnet test CSharpNetCore30
+  - ~/.dotnet/dotnet new nunit -n FSharpNetCore30   --framework netcoreapp3.0 -lang f#; ~/.dotnet/dotnet test FSharpNetCore30
+  - ~/.dotnet/dotnet new nunit -n VBasicNetCore30   --framework netcoreapp3.0 -lang vb; ~/.dotnet/dotnet test VBasicNetCore30
 
   # specify FrameworkPathOverride to run tests under Mono
   - export FrameworkPathOverride=/usr/lib/mono/4.7-api
@@ -88,3 +104,7 @@ script:
 
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet472 --framework net472 -lang c#; dotnet test CSharpNet472; fi
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet472 --framework net472 -lang vb; dotnet test VBasicNet472; fi
+
+  # uncomment when mono will support net48
+  #- if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet48 --framework net48 -lang c#; dotnet test CSharpNet48; fi
+  #- if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet48 --framework net48 -lang vb; dotnet test VBasicNet48; fi

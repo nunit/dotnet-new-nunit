@@ -24,6 +24,15 @@ build_script:
   - dotnet new nunit -n CSharpNetCore21  --framework netcoreapp2.1 -lang c#
   - dotnet new nunit -n FSharpNetCore21  --framework netcoreapp2.1 -lang f#
   - dotnet new nunit -n VBasicNetCore21  --framework netcoreapp2.1 -lang vb
+
+  - dotnet new nunit -n CSharpNetCore22  --framework netcoreapp2.2 -lang c#
+  - dotnet new nunit -n FSharpNetCore22  --framework netcoreapp2.2 -lang f#
+  - dotnet new nunit -n VBasicNetCore22  --framework netcoreapp2.2 -lang vb
+
+  - dotnet new nunit -n CSharpNetCore30  --framework netcoreapp3.0 -lang c#
+  - dotnet new nunit -n FSharpNetCore30  --framework netcoreapp3.0 -lang f#
+  - dotnet new nunit -n VBasicNetCore30  --framework netcoreapp3.0 -lang vb
+
   - dotnet new nunit-test -n NewTestFixture -o CSharpNetCore21 -lang c#
   - dotnet new nunit-test -n NewTestFixture -o FSharpNetCore21 -lang f#
   - dotnet new nunit-test -n NewTestFixture -o VBasicNetCore21 -lang vb
@@ -61,6 +70,9 @@ build_script:
 
   - dotnet new nunit -n CSharpNet472 --framework net472 -lang c#
   - dotnet new nunit -n VBasicNet472 --framework net472 -lang vb
+
+  - dotnet new nunit -n CSharpNet48 --framework net48 -lang c#
+  - dotnet new nunit -n VBasicNet48 --framework net48 -lang vb
 test_script:
   - dotnet test CSharpNetCore1
   - dotnet test FSharpNetCore1
@@ -77,6 +89,15 @@ test_script:
   - dotnet test CSharpNetCore21
   - dotnet test FSharpNetCore21
   - dotnet test VBasicNetCore21
+
+  - dotnet test CSharpNetCore22
+  - dotnet test FSharpNetCore22
+  - dotnet test VBasicNetCore22
+
+  #uncomment when appveyor image will contain .NET Core 3.0
+  #- dotnet test CSharpNetCore30
+  #- dotnet test FSharpNetCore30
+  #- dotnet test VBasicNetCore30
 
   - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" CSharpNet35
   - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" VBasicNet35
@@ -112,6 +133,10 @@ test_script:
 
   - dotnet test CSharpNet472
   - dotnet test VBasicNet472
+
+  #uncomment when appveyor image will contain .NET Framework 4.8
+  #- dotnet test CSharpNet48
+  #- dotnet test VBasicNet48
 
 artifacts:
   - path: '*.nupkg'
