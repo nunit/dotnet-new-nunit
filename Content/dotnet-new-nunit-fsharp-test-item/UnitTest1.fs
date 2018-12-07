@@ -2,7 +2,6 @@ namespace Tests
 
 open NUnit.Framework
 
-[<TestClass>]
 type UnitTest1 () =
 
     [<SetUp>]
