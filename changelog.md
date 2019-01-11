@@ -1,3 +1,9 @@
+11 January 2019, 1.6.1
+----------------------
+
+- update all project templates to default to .NET Core 3.0 (netcoreapp3.0). Other frameworks can still be selected with the `--framework` command line option.
+- update NUnit3TestAdapter dependency to v3.12.0
+
 19 November 2018, 1.6.0
 -----------------------
 
