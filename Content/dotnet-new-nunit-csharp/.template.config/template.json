@@ -102,7 +102,7 @@
         }
       ],
       "replaces": "netcoreapp2.1",
-      "defaultValue": "netcoreapp2.2"
+      "defaultValue": "netcoreapp3.0"
     },
     "EnablePack": {
       "type": "parameter",
