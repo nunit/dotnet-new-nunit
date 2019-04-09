@@ -3,7 +3,7 @@
   <metadata>
     <id>NUnit3.DotNetNew.Template</id>
     <title>NUnit 3 template for dotnet-new</title>
-    <version>1.6.1</version>
+    <version>1.6.2</version>
     <description>Project and item templates containing basic NUnit 3 Test Project.</description>
     <tags>NUnit dotnet core</tags>
     <authors>akharlov</authors>
