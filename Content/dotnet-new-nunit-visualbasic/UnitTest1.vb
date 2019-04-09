@@ -1,6 +1,6 @@
 Imports NUnit.Framework
 
-Namespace Tests
+Namespace Company.TestProject1
 
     Public Class Tests
 
