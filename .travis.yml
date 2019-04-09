@@ -3,37 +3,36 @@ language: csharp
 matrix:
   include:
     - os: linux
-      dist: trusty
-      env: CURRENTOS=UNDER_LINUX
+      dist: xenial
       mono: latest
     - os: osx
-      osx_image: xcode7.1
-      env: CURRENTOS=UNDER_MACOSX
+      osx_image: xcode9.4
       mono: none
 script:
   # installing .NET Core SDK and Mono
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main" > /etc/apt/sources.list.d/dotnetdev.list'; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get install apt-transport-https dpkg; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get update; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get install dotnet-dev-1.1.8 dotnet-sdk-2.1.200 dotnet-sdk-2.1 dotnet-sdk-2.2 mono-devel mono-complete; fi
-  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-dev-osx-x64.1.1.8.pkg https://download.microsoft.com/download/6/5/F/65F1653E-F835-4DE3-BB36-F324D3925F32/dotnet-dev-osx-x64.1.1.8.pkg; fi
-  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-sdk-2.1.505-osx-x64.pkg https://download.visualstudio.microsoft.com/download/pr/7908138c-c0cf-4e5a-b28a-66cf7a781808/a36fe63192ee49593890d84b23729292/dotnet-sdk-2.1.505-osx-x64.pkg; fi
-  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-sdk-2.2.105-osx-x64.pkg https://download.visualstudio.microsoft.com/download/pr/4850aa8f-44a9-4c4a-9961-f18aa4d90ceb/07d790444f3ba6b412a76d6f1aced338/dotnet-sdk-2.2.105-osx-x64.pkg; fi
-  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then sudo installer -pkg /tmp/dotnet-dev-osx-x64.1.1.8.pkg -target /; fi
-  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then sudo installer -pkg /tmp/dotnet-sdk-2.1.505-osx-x64.pkg -target /; fi
-  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then sudo installer -pkg /tmp/dotnet-sdk-2.2.105-osx-x64.pkg -target /; fi
-  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then ln -s /usr/local/share/dotnet/dotnet /usr/local/bin/; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo dpkg -i packages-microsoft-prod.deb; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get update; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get install apt-transport-https dpkg; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get install dotnet-dev-1.1.8 dotnet-sdk-2.1 dotnet-sdk-2.2 mono-devel mono-complete; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get install dotnet-dev-1.1.8 dotnet-sdk-2.1 dotnet-sdk-2.2 mono-devel mono-complete; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-dev-osx-x64.1.1.8.pkg https://download.microsoft.com/download/6/5/F/65F1653E-F835-4DE3-BB36-F324D3925F32/dotnet-dev-osx-x64.1.1.8.pkg; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-sdk-2.1.505-osx-x64.pkg https://download.visualstudio.microsoft.com/download/pr/7908138c-c0cf-4e5a-b28a-66cf7a781808/a36fe63192ee49593890d84b23729292/dotnet-sdk-2.1.505-osx-x64.pkg; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-sdk-2.2.105-osx-x64.pkg https://download.visualstudio.microsoft.com/download/pr/4850aa8f-44a9-4c4a-9961-f18aa4d90ceb/07d790444f3ba6b412a76d6f1aced338/dotnet-sdk-2.2.105-osx-x64.pkg; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then sudo installer -pkg /tmp/dotnet-dev-osx-x64.1.1.8.pkg -target /; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then sudo installer -pkg /tmp/dotnet-sdk-2.1.505-osx-x64.pkg -target /; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then sudo installer -pkg /tmp/dotnet-sdk-2.2.105-osx-x64.pkg -target /; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then ln -s /usr/local/share/dotnet/dotnet /usr/local/bin/; fi
 
+  # install .net core sdk 3 preview
   - wget --retry-connrefused --waitretry=1 https://dot.net/v1/dotnet-install.sh
   - chmod +x dotnet-install.sh
-  - sudo ./dotnet-install.sh  --channel release/2.2.1xx
-  - sudo ./dotnet-install.sh  --channel master
+  - sudo ./dotnet-install.sh  --channel release/3.0.1xx
 
   # install dotnet new nunit template
   - dotnet --info
   - dotnet new -i ./Content
+  - dotnet --info
   - ~/.dotnet/dotnet --info
   - sudo ~/.dotnet/dotnet new -i ./Content
 
@@ -60,13 +59,13 @@ script:
   - dotnet new nunit-test -n NewTestFixture -o VBasicNetCore21 -lang vb;
   - dotnet test VBasicNetCore21;
 
-  - ~/.dotnet/dotnet new nunit -n CSharpNetCore22   --framework netcoreapp2.2 -lang c#; ~/.dotnet/dotnet test CSharpNetCore22
-  - ~/.dotnet/dotnet new nunit -n FSharpNetCore22   --framework netcoreapp2.2 -lang f#; ~/.dotnet/dotnet test FSharpNetCore22
-  - ~/.dotnet/dotnet new nunit -n VBasicNetCore22   --framework netcoreapp2.2 -lang vb; ~/.dotnet/dotnet test VBasicNetCore22
+  - dotnet new nunit -n CSharpNetCore22   --framework netcoreapp2.2 -lang c#; dotnet test CSharpNetCore22
+  - dotnet new nunit -n FSharpNetCore22   --framework netcoreapp2.2 -lang f#; dotnet test FSharpNetCore22
+  - dotnet new nunit -n VBasicNetCore22   --framework netcoreapp2.2 -lang vb; dotnet test VBasicNetCore22
 
-  - ~/.dotnet/dotnet new nunit -n CSharpNetCore30   --framework netcoreapp3.0 -lang c#; ~/.dotnet/dotnet test CSharpNetCore30
-  - ~/.dotnet/dotnet new nunit -n FSharpNetCore30   --framework netcoreapp3.0 -lang f#; ~/.dotnet/dotnet test FSharpNetCore30
-  - ~/.dotnet/dotnet new nunit -n VBasicNetCore30   --framework netcoreapp3.0 -lang vb; ~/.dotnet/dotnet test VBasicNetCore30
+  - sudo ~/.dotnet/dotnet new nunit -n CSharpNetCore30   --framework netcoreapp3.0 -lang c#; sudo ~/.dotnet/dotnet test CSharpNetCore30
+  - sudo ~/.dotnet/dotnet new nunit -n FSharpNetCore30   --framework netcoreapp3.0 -lang f#; sudo ~/.dotnet/dotnet test FSharpNetCore30
+  - sudo ~/.dotnet/dotnet new nunit -n VBasicNetCore30   --framework netcoreapp3.0 -lang vb; sudo ~/.dotnet/dotnet test VBasicNetCore30
 
   # specify FrameworkPathOverride to run tests under Mono
   - export FrameworkPathOverride=/usr/lib/mono/4.7-api
@@ -74,39 +73,39 @@ script:
   # run tests
   # unfortunately, F# under full .NET Framework issues a compilation error, the issue is in F# compiler, disable tests for now
   # unfortunately, Mono under Mac OSX could not resolve .NET Framework assemblies and issues many errors, disable tests for now
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet35  --framework net35 -lang c#; dotnet test CSharpNet35; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet35  --framework net35 -lang vb; dotnet test VBasicNet35; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet35  --framework net35 -lang c#; dotnet test CSharpNet35; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet35  --framework net35 -lang vb; dotnet test VBasicNet35; fi
 
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet40  --framework net40 -lang c#; dotnet test CSharpNet40; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet40  --framework net40 -lang vb; dotnet test VBasicNet40; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet40  --framework net40 -lang c#; dotnet test CSharpNet40; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet40  --framework net40 -lang vb; dotnet test VBasicNet40; fi
 
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet45  --framework net45 -lang c#; dotnet test CSharpNet45; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet45  --framework net45 -lang vb; dotnet test VBasicNet45; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet45  --framework net45 -lang c#; dotnet test CSharpNet45; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet45  --framework net45 -lang vb; dotnet test VBasicNet45; fi
 
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet451 --framework net451 -lang c#; dotnet test CSharpNet451; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet451 --framework net451 -lang vb; dotnet test VBasicNet451; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet451 --framework net451 -lang c#; dotnet test CSharpNet451; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet451 --framework net451 -lang vb; dotnet test VBasicNet451; fi
 
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet452 --framework net452 -lang c#; dotnet test CSharpNet452; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet452 --framework net452 -lang vb; dotnet test VBasicNet452; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet452 --framework net452 -lang c#; dotnet test CSharpNet452; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet452 --framework net452 -lang vb; dotnet test VBasicNet452; fi
 
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet46  --framework net46 -lang c#; dotnet test CSharpNet46; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet46  --framework net46 -lang vb; dotnet test VBasicNet46; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet46  --framework net46 -lang c#; dotnet test CSharpNet46; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet46  --framework net46 -lang vb; dotnet test VBasicNet46; fi
 
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet461 --framework net461 -lang c#; dotnet test CSharpNet461; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet461 --framework net461 -lang vb; dotnet test VBasicNet461; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet461 --framework net461 -lang c#; dotnet test CSharpNet461; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet461 --framework net461 -lang vb; dotnet test VBasicNet461; fi
 
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet462 --framework net462 -lang c#; dotnet test CSharpNet462; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet462 --framework net462 -lang vb; dotnet test VBasicNet462; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet462 --framework net462 -lang c#; dotnet test CSharpNet462; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet462 --framework net462 -lang vb; dotnet test VBasicNet462; fi
 
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet47 --framework net47 -lang c#; dotnet test CSharpNet47; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet47 --framework net47 -lang vb; dotnet test VBasicNet47; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet47 --framework net47 -lang c#; dotnet test CSharpNet47; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet47 --framework net47 -lang vb; dotnet test VBasicNet47; fi
 
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet471 --framework net471 -lang c#; dotnet test CSharpNet471; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet471 --framework net471 -lang vb; dotnet test VBasicNet471; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet471 --framework net471 -lang c#; dotnet test CSharpNet471; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet471 --framework net471 -lang vb; dotnet test VBasicNet471; fi
 
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet472 --framework net472 -lang c#; dotnet test CSharpNet472; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet472 --framework net472 -lang vb; dotnet test VBasicNet472; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet472 --framework net472 -lang c#; dotnet test CSharpNet472; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet472 --framework net472 -lang vb; dotnet test VBasicNet472; fi
 
   # uncomment when mono will support net48
-  #- if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n CSharpNet48 --framework net48 -lang c#; dotnet test CSharpNet48; fi
-  #- if [[ $CURRENTOS == "UNDER_LINUX" ]]; then dotnet new nunit -n VBasicNet48 --framework net48 -lang vb; dotnet test VBasicNet48; fi
+  #- if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n CSharpNet48 --framework net48 -lang c#; dotnet test CSharpNet48; fi
+  #- if [[ $TRAVIS_OS_NAME == "linux" ]]; then dotnet new nunit -n VBasicNet48 --framework net48 -lang vb; dotnet test VBasicNet48; fi

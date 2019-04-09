@@ -1,4 +1,4 @@
-image: Visual Studio 2017 Preview
+image: Visual Studio 2019 Preview
 version: 1.0.{build}
 platform:
   - Any CPU
@@ -94,10 +94,9 @@ test_script:
   - dotnet test FSharpNetCore22
   - dotnet test VBasicNetCore22
 
-  #uncomment when appveyor image will contain .NET Core 3.0
-  #- dotnet test CSharpNetCore30
-  #- dotnet test FSharpNetCore30
-  #- dotnet test VBasicNetCore30
+  - dotnet test CSharpNetCore30
+  - dotnet test FSharpNetCore30
+  - dotnet test VBasicNetCore30
 
   - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" CSharpNet35
   - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" VBasicNet35

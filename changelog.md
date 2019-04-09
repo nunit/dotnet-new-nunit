@@ -1,3 +1,9 @@
+9 April 2019, 1.6.2
+-------------------
+
+- update NUnit3TestAdapter dependency to v3.13.0
+- update Microsoft.NET.Test.Sdk dependency to v16.0.1
+
 11 January 2019, 1.6.1
 ----------------------
 
