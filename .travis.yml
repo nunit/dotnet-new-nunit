@@ -15,7 +15,7 @@ script:
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg; fi
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg; fi
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main" > /etc/apt/sources.list.d/dotnetdev.list'; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get install apt-transport-https; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get install apt-transport-https dpkg; fi
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get update; fi
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get install dotnet-dev-1.1.8 dotnet-sdk-2.1.200 dotnet-sdk-2.1 dotnet-sdk-2.2 mono-devel mono-complete; fi
   - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-dev-osx-x64.1.1.8.pkg https://download.microsoft.com/download/6/5/F/65F1653E-F835-4DE3-BB36-F324D3925F32/dotnet-dev-osx-x64.1.1.8.pkg; fi
