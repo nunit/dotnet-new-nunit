@@ -17,11 +17,13 @@ script:
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main" > /etc/apt/sources.list.d/dotnetdev.list'; fi
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get install apt-transport-https; fi
   - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get update; fi
-  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get install dotnet-dev-1.1.8 dotnet-sdk-2.1.200 dotnet-sdk-2.1 mono-devel mono-complete; fi
+  - if [[ $CURRENTOS == "UNDER_LINUX" ]]; then sudo apt-get install dotnet-dev-1.1.8 dotnet-sdk-2.1.200 dotnet-sdk-2.1 dotnet-sdk-2.2 mono-devel mono-complete; fi
   - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-dev-osx-x64.1.1.8.pkg https://download.microsoft.com/download/6/5/F/65F1653E-F835-4DE3-BB36-F324D3925F32/dotnet-dev-osx-x64.1.1.8.pkg; fi
-  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-sdk-2.1.300-osx-x64.pkg https://download.microsoft.com/download/8/8/5/88544F33-836A-49A5-8B67-451C24709A8F/dotnet-sdk-2.1.300-osx-x64.pkg; fi
+  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-sdk-2.1.505-osx-x64.pkg https://download.visualstudio.microsoft.com/download/pr/7908138c-c0cf-4e5a-b28a-66cf7a781808/a36fe63192ee49593890d84b23729292/dotnet-sdk-2.1.505-osx-x64.pkg; fi
+  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-sdk-2.2.105-osx-x64.pkg https://download.visualstudio.microsoft.com/download/pr/4850aa8f-44a9-4c4a-9961-f18aa4d90ceb/07d790444f3ba6b412a76d6f1aced338/dotnet-sdk-2.2.105-osx-x64.pkg; fi
   - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then sudo installer -pkg /tmp/dotnet-dev-osx-x64.1.1.8.pkg -target /; fi
-  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then sudo installer -pkg /tmp/dotnet-sdk-2.1.300-osx-x64.pkg -target /; fi
+  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then sudo installer -pkg /tmp/dotnet-sdk-2.1.505-osx-x64.pkg -target /; fi
+  - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then sudo installer -pkg /tmp/dotnet-sdk-2.2.105-osx-x64.pkg -target /; fi
   - if [[ $CURRENTOS == "UNDER_MACOSX" ]]; then ln -s /usr/local/share/dotnet/dotnet /usr/local/bin/; fi
 
   - wget --retry-connrefused --waitretry=1 https://dot.net/v1/dotnet-install.sh
