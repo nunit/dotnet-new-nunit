@@ -1,13 +1,11 @@
-namespace Tests
+module Tests
 
 open NUnit.Framework
 
-type UnitTest1 () =
+[<SetUp>]
+let Setup () =
+    ()
 
-    [<SetUp>]
-    member this.Setup () =
-        ()
-
-    [<Test>]
-    member this.Test1 () =
-        Assert.Pass()
+[<Test>]
+let Test1 () =
+    Assert.Pass()

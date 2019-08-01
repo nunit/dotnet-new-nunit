@@ -1,13 +1,11 @@
-namespace Company.TestProject1
+module Company.TestProject1
 
 open NUnit.Framework
 
-type TestClass () =
+[<SetUp>]
+let Setup () =
+    ()
 
-    [<SetUp>]
-    member this.Setup () =
-        ()
-
-    [<Test>]
-    member this.Test1 () =
-        Assert.Pass()
+[<Test>]
+let Test1 () =
+    Assert.Pass()
