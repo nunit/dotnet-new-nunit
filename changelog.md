@@ -1,3 +1,10 @@
+6 August 2019, 1.6.3
+--------------------
+
+- update nunit dependency to v3.12.0
+- update Microsoft.NET.Test.Sdk dependency to v16.2.0
+- F# unit test templates are made module based instead of class based (thanks to [zanaptak](https://github.com/zanaptak), #27)
+
 9 April 2019, 1.6.2
 -------------------
 
@@ -30,7 +37,7 @@
 12 September 2018, v1.5.2
 -------------------------
 
-- open UnitTest.cs file when project created in Visual Studio (thanks to @jmarolf, #14)
+- open UnitTest.cs file when project created in Visual Studio (thanks to [jmarolf](https://github.com/jmarolf), #14)
 - update Microsoft.NET.Test.Sdk dependency to v15.8.0
 
 07 May 2018, v1.5.1
