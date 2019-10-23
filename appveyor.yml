@@ -64,6 +64,10 @@ for:
     - dotnet new nunit -n FSharpNetCore30  --framework netcoreapp3.0 -lang f#
     - dotnet new nunit -n VBasicNetCore30  --framework netcoreapp3.0 -lang vb
 
+    - dotnet new nunit -n CSharpNetCore31  --framework netcoreapp3.1 -lang c#
+    - dotnet new nunit -n FSharpNetCore31  --framework netcoreapp3.1 -lang f#
+    - dotnet new nunit -n VBasicNetCore31  --framework netcoreapp3.1 -lang vb
+
     - dotnet new nunit-test -n NewTestFixture -o CSharpNetCore21 -lang c#
     - dotnet new nunit-test -n NewTestFixture -o FSharpNetCore21 -lang f#
     - dotnet new nunit-test -n NewTestFixture -o VBasicNetCore21 -lang vb
@@ -122,6 +126,10 @@ for:
     - dotnet test FSharpNetCore30
     - dotnet test VBasicNetCore30
 
+    - dotnet test CSharpNetCore31
+    - dotnet test FSharpNetCore31
+    - dotnet test VBasicNetCore31
+
     - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" CSharpNet35
     - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" VBasicNet35
     - dotnet test CSharpNet35 --no-build
@@ -157,5 +165,7 @@ for:
     - dotnet test CSharpNet472
     - dotnet test VBasicNet472
 
+    - dotnet test CSharpNet48
+    - dotnet test VBasicNet48
   artifacts:
     - path: '*.nupkg'
