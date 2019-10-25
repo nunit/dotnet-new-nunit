@@ -1,3 +1,10 @@
+25 October 2019, 1.7.0
+----------------------
+
+- add new `--framework` supported parameters:
+    + .NET Core 3.1 version netcoreapp3.1
+- update all project templates to default to .NET Core 3.1 (netcoreapp3.1). Other frameworks can still be selected with the `--framework` command line option.
+
 23 October 2019, 1.6.4
 ----------------------
 

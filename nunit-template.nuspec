@@ -3,7 +3,7 @@
   <metadata>
     <id>NUnit3.DotNetNew.Template</id>
     <title>NUnit 3 template for dotnet-new</title>
-    <version>1.6.4</version>
+    <version>1.7.0</version>
     <description>Project and item templates containing basic NUnit 3 Test Project.</description>
     <tags>NUnit dotnet core</tags>
     <authors>akharlov</authors>
@@ -19,6 +19,8 @@
 - NUnit v3.12.0
 - NUnit3TestAdapter v3.15.1
 - Microsoft.NET.Test.Sdk v16.3.0
+- add new `--framework` supported parameters: .NET Core 3.1 version netcoreapp3.1
+- update all project templates to default to .NET Core 3.1 (netcoreapp3.1). Other frameworks can still be selected with the `--framework` command line option.
     </releaseNotes>
   </metadata>
   <files>
