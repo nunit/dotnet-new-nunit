@@ -1,3 +1,9 @@
+11 November 2019, 1.6.5
+----------------------
+
+- update Microsoft.NET.Test.Sdk to v16.4.0
+- fix condition to include latest version of `Microsoft.NET.Test.Sdk` for netcoreapp2 and higher
+
 23 October 2019, 1.6.4
 ----------------------
 
