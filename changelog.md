@@ -1,3 +1,9 @@
+14 March 2020, 1.8.0
+----------------------
+
+- update all project templates to default to .NET 5 (net5.0). Other frameworks can still be selected with the `--framework` command line option.
+- remove out of support .NET Core frameworks (1.0, 1.1, 2.0, 2.2, 3.0)
+
 12 November 2019, 1.6.5 and 1.7.1
 ---------------------------------
 

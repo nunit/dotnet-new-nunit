@@ -29,32 +29,16 @@
       "datatype": "choice",
       "choices": [
         {
-          "choice": "netcoreapp1.0",
-          "description": "Target netcoreapp1.0"
-        },
-        {
-          "choice": "netcoreapp1.1",
-          "description": "Target netcoreapp1.1"
-        },
-        {
-          "choice": "netcoreapp2.0",
-          "description": "Target netcoreapp2.0"
-        },
-        {
           "choice": "netcoreapp2.1",
           "description": "Target netcoreapp2.1"
         },
         {
-          "choice": "netcoreapp2.2",
-          "description": "Target netcoreapp2.2"
-        },
-        {
-          "choice": "netcoreapp3.0",
-          "description": "Target netcoreapp3.0"
-        },
-        {
           "choice": "netcoreapp3.1",
           "description": "Target netcoreapp3.1"
+        },
+        {
+          "choice": "net5.0",
+          "description": "Target net5.0"
         },
         {
           "choice": "net35",
@@ -105,8 +89,8 @@
           "description": "Target net48"
         }
       ],
-      "replaces": "netcoreapp2.1",
-      "defaultValue": "netcoreapp3.1"
+      "replaces": "net5.0",
+      "defaultValue": "net5.0"
     },
     "EnablePack": {
       "type": "parameter",

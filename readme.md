@@ -31,18 +31,18 @@ To create new NUnit library project from template, run:
 dotnet new nunit
 ```
 
-By default it will create NUnit Test Project targeted to `netcoreapp3.0`.
+By default it will create NUnit Test Project targeted to `net5.0`.
 You can specify `--framework` command line switch to change targeting:
 
 ```
-dotnet new nunit --framework netcoreapp1.1
+dotnet new nunit --framework netcoreapp3.1
 ```
 
 To specify new folder name for your NUnit Test Project you can use `-n` switch.
 Following command will create `NUnit-Tests` folder and will generate NUnit Test Project there:
 
 ```
-dotnet new nunit -n NUnit-Tests --framework netcoreapp1.0
+dotnet new nunit -n NUnit-Tests --framework netcoreapp3.1
 ```
 
 If you'd like to create F# or VB test project, you can specify project language with `-lang` switch:
