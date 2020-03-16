@@ -1,3 +1,9 @@
+08 March 2020, 1.7.2
+--------------------
+
+- update `NUnit3TestAdapter` to v3.16.1 (supported for .NET Core 2.1+)
+- update `Microsoft.NET.Test.Sdk` dependency to v16.5.0 (supported for .NET Core 2.0+)
+
 12 November 2019, 1.6.5 and 1.7.1
 ---------------------------------
 

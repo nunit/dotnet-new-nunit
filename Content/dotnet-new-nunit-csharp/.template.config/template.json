@@ -108,6 +108,26 @@
       "replaces": "netcoreapp2.1",
       "defaultValue": "netcoreapp3.1"
     },
+    "DotNetFramework": {
+      "type": "computed",
+      "value": "(Framework >= \"net2\" && Framework < \"net5\")"
+    },
+    "DotNetCoreLessThan20": {
+      "type": "computed",
+      "value": "(Framework >= \"netcoreapp1\" && Framework < \"netcoreapp2\")"
+    },
+    "DotNetCoreGreaterOrEqualThan20": {
+      "type": "computed",
+      "value": "(Framework >= \"netcoreapp2.0\" && Framework <= \"netcoreapp9\")"
+    },
+    "DotNetCoreLessThan21": {
+      "type": "computed",
+      "value": "(Framework >= \"netcoreapp1\" && Framework < \"netcoreapp2.1\")"
+    },
+    "DotNetCoreGreaterOrEqualThan21": {
+      "type": "computed",
+      "value": "(Framework >= \"netcoreapp2.1\" && Framework <= \"netcoreapp9\")"
+    },
     "EnablePack": {
       "type": "parameter",
       "datatype": "bool",

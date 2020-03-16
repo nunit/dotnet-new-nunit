@@ -1,6 +1,6 @@
 image:
   - Visual Studio 2017
-  - Visual Studio 2019 Preview
+  - Visual Studio 2019
 version: 1.0.{build}
 platform:
   - Any CPU
@@ -26,28 +26,6 @@ for:
     - dotnet new nunit -n FSharpNetCore11  --framework netcoreapp1.1 -lang f#
     - dotnet new nunit -n VBasicNetCore11  --framework netcoreapp1.1 -lang vb
 
-  test_script:
-    - dotnet test CSharpNetCore1
-    - dotnet test FSharpNetCore1
-    - dotnet test VBasicNetCore1
-
-    - dotnet test CSharpNetCore11
-    - dotnet test FSharpNetCore11
-    - dotnet test VBasicNetCore11
-
-  artifacts:
-    - path: '*.nupkg'
-
--
-  matrix:
-    only:
-      - image: Visual Studio 2019 Preview
-
-  build_script:
-    - nuget pack nunit-template.nuspec
-    - dotnet new -i ./Content
-    - dotnet --info
-
     - dotnet new nunit -n CSharpNetCore2   --framework netcoreapp2.0 -lang c#
     - dotnet new nunit -n FSharpNetCore2   --framework netcoreapp2.0 -lang f#
     - dotnet new nunit -n VBasicNetCore2   --framework netcoreapp2.0 -lang vb
@@ -59,6 +37,40 @@ for:
     - dotnet new nunit -n CSharpNetCore22  --framework netcoreapp2.2 -lang c#
     - dotnet new nunit -n FSharpNetCore22  --framework netcoreapp2.2 -lang f#
     - dotnet new nunit -n VBasicNetCore22  --framework netcoreapp2.2 -lang vb
+
+  test_script:
+    - dotnet test CSharpNetCore1
+    - dotnet test FSharpNetCore1
+    - dotnet test VBasicNetCore1
+
+    - dotnet test CSharpNetCore11
+    - dotnet test FSharpNetCore11
+    - dotnet test VBasicNetCore11
+
+    - dotnet test CSharpNetCore2
+    - dotnet test FSharpNetCore2
+    - dotnet test VBasicNetCore2
+
+    - dotnet test CSharpNetCore21
+    - dotnet test FSharpNetCore21
+    - dotnet test VBasicNetCore21
+
+    - dotnet test CSharpNetCore22
+    - dotnet test FSharpNetCore22
+    - dotnet test VBasicNetCore22
+
+  artifacts:
+    - path: '*.nupkg'
+
+-
+  matrix:
+    only:
+      - image: Visual Studio 2019
+
+  build_script:
+    - nuget pack nunit-template.nuspec
+    - dotnet new -i ./Content
+    - dotnet --info
 
     - dotnet new nunit -n CSharpNetCore30  --framework netcoreapp3.0 -lang c#
     - dotnet new nunit -n FSharpNetCore30  --framework netcoreapp3.0 -lang f#
@@ -110,18 +122,6 @@ for:
     - dotnet new nunit -n VBasicNet48 --framework net48 -lang vb
 
   test_script:
-    - dotnet test CSharpNetCore2
-    - dotnet test FSharpNetCore2
-    - dotnet test VBasicNetCore2
-
-    - dotnet test CSharpNetCore21
-    - dotnet test FSharpNetCore21
-    - dotnet test VBasicNetCore21
-
-    - dotnet test CSharpNetCore22
-    - dotnet test FSharpNetCore22
-    - dotnet test VBasicNetCore22
-
     - dotnet test CSharpNetCore30
     - dotnet test FSharpNetCore30
     - dotnet test VBasicNetCore30
