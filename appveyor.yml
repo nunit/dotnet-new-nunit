@@ -1,6 +1,7 @@
 image:
   - Visual Studio 2017
   - Visual Studio 2019
+  - Visual Studio 2019 Preview
 version: 1.0.{build}
 platform:
   - Any CPU
@@ -167,5 +168,30 @@ for:
 
     - dotnet test CSharpNet48
     - dotnet test VBasicNet48
+  artifacts:
+    - path: '*.nupkg'
+
+-
+  matrix:
+    only:
+      - image: Visual Studio 2019 Preview
+
+  build_script:
+    - nuget pack nunit-template.nuspec
+
+    - appveyor DownloadFile https://dot.net/v1/dotnet-install.ps1
+    - powershell -NoProfile -NoLogo -ExecutionPolicy Unrestricted -Command ".\dotnet-install.ps1 --Version 5.0.100-preview.1.20155.7"
+
+    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new -i ./Content'
+    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" --info'
+
+    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n CSharpNetCore50 --framework netcoreapp5.0 -lang c#'
+    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n FSharpNetCore50 --framework netcoreapp5.0 -lang f#'
+    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n VBasicNetCore50 --framework netcoreapp5.0 -lang vb'
+
+  test_script:
+    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" test CSharpNetCore50'
+    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" test FSharpNetCore50'
+    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" test VBasicNetCore50'
   artifacts:
     - path: '*.nupkg'

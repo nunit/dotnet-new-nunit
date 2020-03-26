@@ -1,3 +1,9 @@
+26 March 2020, v1.8.0
+---------------------
+
+- add new `--framework` supported parameters:
+    + netcoreapp5.0
+
 08 March 2020, 1.7.2
 --------------------
 
