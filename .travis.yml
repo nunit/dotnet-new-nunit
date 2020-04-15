@@ -67,15 +67,15 @@ jobs:
       dist: bionic
       mono: none
       script:
-        - curl -L https://aka.ms/install-dotnet-preview -o install-dotnet-preview.sh
+        - "curl -H 'Cache-Control: no-cache' -L https://aka.ms/install-dotnet-preview -o install-dotnet-preview.sh"
         - sudo bash install-dotnet-preview.sh
 
         - dotnet new -i ./Content
         - dotnet --info
 
-        - dotnet new nunit -n CSharpNetCore50   --framework netcoreapp5.0 -lang c#; dotnet test CSharpNetCore50
-        - dotnet new nunit -n FSharpNetCore50   --framework netcoreapp5.0 -lang f#; dotnet test FSharpNetCore50
-        - dotnet new nunit -n VBasicNetCore50   --framework netcoreapp5.0 -lang vb; dotnet test VBasicNetCore50
+        - dotnet new nunit -n CSharpNetCore50   --framework net5.0 -lang c#; dotnet test CSharpNetCore50
+        - dotnet new nunit -n FSharpNetCore50   --framework net5.0 -lang f#; dotnet test FSharpNetCore50
+        - dotnet new nunit -n VBasicNetCore50   --framework net5.0 -lang vb; dotnet test VBasicNetCore50
 
     - name: '[ubuntu bionic] Support for Mono'
       os: linux
@@ -198,13 +198,13 @@ jobs:
       osx_image: xcode11.2
       mono: none
       script:
-        - wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-sdk-5.0.100-osx-x64.pkg https://download.visualstudio.microsoft.com/download/pr/f262d833-69d3-4aa1-bac1-b32075bebed3/474be39cca68cd46d3dc2cc03188f217/dotnet-sdk-5.0.100-preview.1.20155.7-osx-x64.pkg
+        - wget --retry-connrefused --waitretry=1 -O /tmp/dotnet-sdk-5.0.100-osx-x64.pkg https://download.visualstudio.microsoft.com/download/pr/3ce4af4f-f5d5-406c-a065-2ecc9bcc5fd2/353affd22a0727b476998312738ac35f/dotnet-sdk-5.0.100-preview.2.20176.6-osx-x64.pkg
         - sudo installer -pkg /tmp/dotnet-sdk-5.0.100-osx-x64.pkg -target /
         - ln -s /usr/local/share/dotnet/dotnet /usr/local/bin/
 
         - dotnet new -i ./Content
         - dotnet --info
 
-        - dotnet new nunit -n CSharpNetCore50   --framework netcoreapp5.0 -lang c#; dotnet test CSharpNetCore50
-        - dotnet new nunit -n FSharpNetCore50   --framework netcoreapp5.0 -lang f#; dotnet test FSharpNetCore50
-        - dotnet new nunit -n VBasicNetCore50   --framework netcoreapp5.0 -lang vb; dotnet test VBasicNetCore50
+        - dotnet new nunit -n CSharpNetCore50   --framework net5.0 -lang c#; dotnet test CSharpNetCore50
+        - dotnet new nunit -n FSharpNetCore50   --framework net5.0 -lang f#; dotnet test FSharpNetCore50
+        - dotnet new nunit -n VBasicNetCore50   --framework net5.0 -lang vb; dotnet test VBasicNetCore50

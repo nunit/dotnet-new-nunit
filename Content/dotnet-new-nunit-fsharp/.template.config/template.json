@@ -57,8 +57,8 @@
           "description": "Target netcoreapp3.1"
         },
         {
-          "choice": "netcoreapp5.0",
-          "description": "Target netcoreapp5.0"
+          "choice": "net5.0",
+          "description": "Target net5.0"
         },
         {
           "choice": "net35",
@@ -110,7 +110,7 @@
         }
       ],
       "replaces": "netcoreapp2.1",
-      "defaultValue": "netcoreapp5.0"
+      "defaultValue": "net5.0"
     },
     "DotNetFramework": {
       "type": "computed",
@@ -131,6 +131,10 @@
     "DotNetCoreGreaterOrEqualThan21": {
       "type": "computed",
       "value": "(Framework >= \"netcoreapp2.1\" && Framework <= \"netcoreapp9\")"
+    },
+    "DotNetCoreGreaterOrEqualThan50": {
+      "type": "computed",
+      "value": "(Framework >= \"net5.0\" && Framework < \"net9.0\")"
     },
     "EnablePack": {
       "type": "parameter",
