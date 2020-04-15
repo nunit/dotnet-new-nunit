@@ -1,3 +1,9 @@
+15 April 2020, v1.8.1
+---------------------
+
+- replace `netcoreapp5.0` to `net5.0` due to changes in 5.0.100-preview.2.20176.6 version of .NET Core SDK
+  (https://github.com/nunit/dotnet-new-nunit/issues/38)
+
 26 March 2020, v1.8.0
 ---------------------
 

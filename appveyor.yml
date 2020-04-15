@@ -180,14 +180,14 @@ for:
     - nuget pack nunit-template.nuspec
 
     - appveyor DownloadFile https://dot.net/v1/dotnet-install.ps1
-    - powershell -NoProfile -NoLogo -ExecutionPolicy Unrestricted -Command ".\dotnet-install.ps1 --Version 5.0.100-preview.1.20155.7"
+    - powershell -NoProfile -NoLogo -ExecutionPolicy Unrestricted -Command ".\dotnet-install.ps1 --Version 5.0.100-preview.2.20176.6"
 
     - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new -i ./Content'
     - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" --info'
 
-    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n CSharpNetCore50 --framework netcoreapp5.0 -lang c#'
-    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n FSharpNetCore50 --framework netcoreapp5.0 -lang f#'
-    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n VBasicNetCore50 --framework netcoreapp5.0 -lang vb'
+    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n CSharpNetCore50 --framework net5.0 -lang c#'
+    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n FSharpNetCore50 --framework net5.0 -lang f#'
+    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n VBasicNetCore50 --framework net5.0 -lang vb'
 
   test_script:
     - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" test CSharpNetCore50'
