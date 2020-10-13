@@ -160,7 +160,6 @@
       "path": "UnitTest1.cs"
     }
   ],
-  "defaultName": "TestProject1",
   "postActions": [
     {
       "condition": "(!skipRestore)",
