@@ -13,13 +13,13 @@
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" Condition="$(DotNetCoreLessThan21)" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" Condition="$(DotNetCoreGreaterOrEqualThan21)" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" Condition="$(DotNetCoreGreaterOrEqualThan50)" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" Condition="$(DotNetFramework)" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" Condition="$(DotNetCoreGreaterOrEqualThan21)" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" Condition="$(DotNetCoreGreaterOrEqualThan50)" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" Condition="$(DotNetFramework)" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" Condition="$(DotNetCoreLessThan20)"/>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" Condition="$(DotNetCoreGreaterOrEqualThan20)"/>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" Condition="$(DotNetCoreGreaterOrEqualThan50)"/>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" Condition="$(DotNetFramework)"/>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" Condition="$(DotNetCoreGreaterOrEqualThan20)"/>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" Condition="$(DotNetCoreGreaterOrEqualThan50)"/>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" Condition="$(DotNetFramework)"/>
   </ItemGroup>
 
   <ItemGroup>
