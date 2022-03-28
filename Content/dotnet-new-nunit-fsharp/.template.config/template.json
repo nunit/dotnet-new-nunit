@@ -136,9 +136,13 @@
       "type": "computed",
       "value": "(Framework >= \"netcoreapp2.1\" && Framework <= \"netcoreapp9\")"
     },
-    "DotNetCoreGreaterOrEqualThan50": {
+    "DotNet50": {
       "type": "computed",
-      "value": "(Framework >= \"net5.0\" && Framework < \"net9.0\")"
+      "value": "(Framework >= \"net5.0\" && Framework < \"net6.0\")"
+    },
+    "DotNetCoreGreaterOrEqualThan60": {
+      "type": "computed",
+      "value": "(Framework >= \"net6.0\" && Framework < \"net9.0\")"
     },
     "EnablePack": {
       "type": "parameter",
