@@ -114,21 +114,21 @@ for:
     - dotnet new -i ./*.nupkg
     - dotnet --info
 
-    - dotnet new nunit -n CSharpNetCore50 --framework net5.0 -lang c#'
-    - dotnet new nunit -n FSharpNetCore50 --framework net5.0 -lang f#'
-    - dotnet new nunit -n VBasicNetCore50 --framework net5.0 -lang vb'
+    - dotnet new nunit -n CSharpNetCore50 --framework net5.0 -lang c#
+    - dotnet new nunit -n FSharpNetCore50 --framework net5.0 -lang f#
+    - dotnet new nunit -n VBasicNetCore50 --framework net5.0 -lang vb
 
-    - dotnet new nunit -n CSharpNetCore60 --framework net6.0 -lang c#'
-    - dotnet new nunit -n FSharpNetCore60 --framework net6.0 -lang f#'
-    - dotnet new nunit -n VBasicNetCore60 --framework net6.0 -lang vb'
+    - dotnet new nunit -n CSharpNetCore60 --framework net6.0 -lang c#
+    - dotnet new nunit -n FSharpNetCore60 --framework net6.0 -lang f#
+    - dotnet new nunit -n VBasicNetCore60 --framework net6.0 -lang vb
 
   test_script:
-    - dotnet test CSharpNetCore50'
-    - dotnet test FSharpNetCore50'
-    - dotnet test VBasicNetCore50'
+    - dotnet test CSharpNetCore50
+    - dotnet test FSharpNetCore50
+    - dotnet test VBasicNetCore50
 
-    - dotnet test CSharpNetCore60'
-    - dotnet test FSharpNetCore60'
-    - dotnet test VBasicNetCore60'
+    - dotnet test CSharpNetCore60
+    - dotnet test FSharpNetCore60
+    - dotnet test VBasicNetCore60
   artifacts:
     - path: '*.nupkg'
