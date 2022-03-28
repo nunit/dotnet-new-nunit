@@ -29,30 +29,6 @@
       "datatype": "choice",
       "choices": [
         {
-          "choice": "netcoreapp1.0",
-          "description": "Target netcoreapp1.0"
-        },
-        {
-          "choice": "netcoreapp1.1",
-          "description": "Target netcoreapp1.1"
-        },
-        {
-          "choice": "netcoreapp2.0",
-          "description": "Target netcoreapp2.0"
-        },
-        {
-          "choice": "netcoreapp2.1",
-          "description": "Target netcoreapp2.1"
-        },
-        {
-          "choice": "netcoreapp2.2",
-          "description": "Target netcoreapp2.2"
-        },
-        {
-          "choice": "netcoreapp3.0",
-          "description": "Target netcoreapp3.0"
-        },
-        {
           "choice": "netcoreapp3.1",
           "description": "Target netcoreapp3.1"
         },
@@ -113,28 +89,16 @@
           "description": "Target net48"
         }
       ],
-      "replaces": "netcoreapp2.1",
+      "replaces": "netcoreapp3.1",
       "defaultValue": "net6.0"
     },
     "DotNetFramework": {
       "type": "computed",
       "value": "(Framework >= \"net2\" && Framework < \"net5\")"
     },
-    "DotNetCoreLessThan20": {
+    "DotNetCoreGreaterOrEqualThan31": {
       "type": "computed",
-      "value": "(Framework >= \"netcoreapp1\" && Framework < \"netcoreapp2\")"
-    },
-    "DotNetCoreGreaterOrEqualThan20": {
-      "type": "computed",
-      "value": "(Framework >= \"netcoreapp2.0\" && Framework <= \"netcoreapp9\")"
-    },
-    "DotNetCoreLessThan21": {
-      "type": "computed",
-      "value": "(Framework >= \"netcoreapp1\" && Framework < \"netcoreapp2.1\")"
-    },
-    "DotNetCoreGreaterOrEqualThan21": {
-      "type": "computed",
-      "value": "(Framework >= \"netcoreapp2.1\" && Framework <= \"netcoreapp9\")"
+      "value": "(Framework >= \"netcoreapp3.1\" && Framework <= \"netcoreapp9\")"
     },
     "DotNet50": {
       "type": "computed",

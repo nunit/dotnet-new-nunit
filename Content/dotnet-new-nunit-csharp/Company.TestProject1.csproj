@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework Condition="'$(TargetFrameworkOverride)' == ''">netcoreapp2.1</TargetFramework>
+    <TargetFramework Condition="'$(TargetFrameworkOverride)' == ''">netcoreapp3.1</TargetFramework>
     <TargetFramework Condition="'$(TargetFrameworkOverride)' != ''">TargetFrameworkOverride</TargetFramework>
     <RootNamespace Condition="'$(name)' != '$(name{-VALUE-FORMS-}safe_namespace)'">Company.TestProject1</RootNamespace>
 
@@ -11,13 +11,8 @@
 
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.13.3" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" Condition="$(DotNetCoreLessThan21)" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" Condition="$(DotNetCoreGreaterOrEqualThan21)" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" Condition="$(DotNet50)" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" Condition="$(DotNetCoreGreaterOrEqualThan60)" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" Condition="$(DotNetFramework)" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" Condition="$(DotNetCoreLessThan20)"/>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" Condition="$(DotNetCoreGreaterOrEqualThan20)"/>
+    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" Condition="$(DotNetCoreGreaterOrEqualThan31)"/>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" Condition="$(DotNet50)"/>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" Condition="$(DotNetFramework)"/>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" Condition="$(DotNetCoreGreaterOrEqualThan60)"/>

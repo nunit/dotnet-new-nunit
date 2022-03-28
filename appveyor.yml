@@ -1,8 +1,7 @@
 image:
-  - Visual Studio 2017
   - Visual Studio 2019
   - Visual Studio 2022
-version: 1.0.{build}
+version: 1.9.0.{build}
 platform:
   - Any CPU
 configuration:
@@ -12,78 +11,12 @@ for:
 -
   matrix:
     only:
-      - image: Visual Studio 2017
-
-  build_script:
-    - nuget pack nunit-template.nuspec
-    - dotnet new -i ./Content
-    - dotnet --info
-
-    - dotnet new nunit -n CSharpNetCore1   --framework netcoreapp1.0 -lang c#
-    - dotnet new nunit -n FSharpNetCore1   --framework netcoreapp1.0 -lang f#
-    - dotnet new nunit -n VBasicNetCore1   --framework netcoreapp1.0 -lang vb
-
-    - dotnet new nunit -n CSharpNetCore11  --framework netcoreapp1.1 -lang c#
-    - dotnet new nunit -n FSharpNetCore11  --framework netcoreapp1.1 -lang f#
-    - dotnet new nunit -n VBasicNetCore11  --framework netcoreapp1.1 -lang vb
-
-    - dotnet new nunit -n CSharpNetCore2   --framework netcoreapp2.0 -lang c#
-    - dotnet new nunit -n FSharpNetCore2   --framework netcoreapp2.0 -lang f#
-    - dotnet new nunit -n VBasicNetCore2   --framework netcoreapp2.0 -lang vb
-
-    - dotnet new nunit -n CSharpNetCore21  --framework netcoreapp2.1 -lang c#
-    - dotnet new nunit -n FSharpNetCore21  --framework netcoreapp2.1 -lang f#
-    - dotnet new nunit -n VBasicNetCore21  --framework netcoreapp2.1 -lang vb
-
-    - dotnet new nunit -n CSharpNetCore22  --framework netcoreapp2.2 -lang c#
-    - dotnet new nunit -n FSharpNetCore22  --framework netcoreapp2.2 -lang f#
-    - dotnet new nunit -n VBasicNetCore22  --framework netcoreapp2.2 -lang vb
-
-  test_script:
-    - dotnet test CSharpNetCore1
-    - dotnet test FSharpNetCore1
-    - dotnet test VBasicNetCore1
-
-    - dotnet test CSharpNetCore11
-    - dotnet test FSharpNetCore11
-    - dotnet test VBasicNetCore11
-
-    - dotnet test CSharpNetCore2
-    - dotnet test FSharpNetCore2
-    - dotnet test VBasicNetCore2
-
-    - dotnet test CSharpNetCore21
-    - dotnet test FSharpNetCore21
-    - dotnet test VBasicNetCore21
-
-    - dotnet test CSharpNetCore22
-    - dotnet test FSharpNetCore22
-    - dotnet test VBasicNetCore22
-
-  artifacts:
-    - path: '*.nupkg'
-
--
-  matrix:
-    only:
       - image: Visual Studio 2019
 
   build_script:
     - nuget pack nunit-template.nuspec
-    - dotnet new -i ./Content
+    - dotnet new -i ./*.nupkg
     - dotnet --info
-
-    - dotnet new nunit -n CSharpNetCore30  --framework netcoreapp3.0 -lang c#
-    - dotnet new nunit -n FSharpNetCore30  --framework netcoreapp3.0 -lang f#
-    - dotnet new nunit -n VBasicNetCore30  --framework netcoreapp3.0 -lang vb
-
-    - dotnet new nunit -n CSharpNetCore31  --framework netcoreapp3.1 -lang c#
-    - dotnet new nunit -n FSharpNetCore31  --framework netcoreapp3.1 -lang f#
-    - dotnet new nunit -n VBasicNetCore31  --framework netcoreapp3.1 -lang vb
-
-    - dotnet new nunit-test -n NewTestFixture -o CSharpNetCore21 -lang c#
-    - dotnet new nunit-test -n NewTestFixture -o FSharpNetCore21 -lang f#
-    - dotnet new nunit-test -n NewTestFixture -o VBasicNetCore21 -lang vb
 
     # unfortunately, F# under full .NET Framework issues a compilation error, the issue is in F# compiler
     - dotnet new nunit -n CSharpNet35  --framework net35 -lang c#
@@ -122,15 +55,11 @@ for:
     - dotnet new nunit -n CSharpNet48 --framework net48 -lang c#
     - dotnet new nunit -n VBasicNet48 --framework net48 -lang vb
 
+    - dotnet new nunit -n CSharpNetCore31  --framework netcoreapp3.1 -lang c#
+    - dotnet new nunit -n FSharpNetCore31  --framework netcoreapp3.1 -lang f#
+    - dotnet new nunit -n VBasicNetCore31  --framework netcoreapp3.1 -lang vb
+
   test_script:
-    - dotnet test CSharpNetCore30
-    - dotnet test FSharpNetCore30
-    - dotnet test VBasicNetCore30
-
-    - dotnet test CSharpNetCore31
-    - dotnet test FSharpNetCore31
-    - dotnet test VBasicNetCore31
-
     - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" CSharpNet35
     - msbuild /p:FrameworkPathOverride="%programfiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client" VBasicNet35
     - dotnet test CSharpNet35 --no-build
@@ -168,6 +97,10 @@ for:
 
     - dotnet test CSharpNet48
     - dotnet test VBasicNet48
+
+    - dotnet test CSharpNetCore31
+    - dotnet test FSharpNetCore31
+    - dotnet test VBasicNetCore31
   artifacts:
     - path: '*.nupkg'
 
@@ -178,8 +111,7 @@ for:
 
   build_script:
     - nuget pack nunit-template.nuspec
-
-    - dotnet new -i ./Content'
+    - dotnet new -i ./*.nupkg
     - dotnet --info'
 
     - dotnet new nunit -n CSharpNetCore50 --framework net5.0 -lang c#'
