@@ -112,7 +112,7 @@ for:
   build_script:
     - nuget pack nunit-template.nuspec
     - dotnet new -i ./*.nupkg
-    - dotnet --info'
+    - dotnet --info
 
     - dotnet new nunit -n CSharpNetCore50 --framework net5.0 -lang c#'
     - dotnet new nunit -n FSharpNetCore50 --framework net5.0 -lang f#'
