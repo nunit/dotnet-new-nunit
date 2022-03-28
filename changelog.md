@@ -1,3 +1,10 @@
+27 March 2021, v1.9.0
+---------------------
+
+- remove Travis build
+- add new `--framework` supported parameters:
+    + net6.0
+
 15 April 2020, v1.8.1
 ---------------------
 

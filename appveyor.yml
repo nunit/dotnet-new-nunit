@@ -1,7 +1,7 @@
 image:
   - Visual Studio 2017
   - Visual Studio 2019
-  - Visual Studio 2019 Preview
+  - Visual Studio 2022
 version: 1.0.{build}
 platform:
   - Any CPU
@@ -174,24 +174,29 @@ for:
 -
   matrix:
     only:
-      - image: Visual Studio 2019 Preview
+      - image: Visual Studio 2022
 
   build_script:
     - nuget pack nunit-template.nuspec
 
-    - appveyor DownloadFile https://dot.net/v1/dotnet-install.ps1
-    - powershell -NoProfile -NoLogo -ExecutionPolicy Unrestricted -Command ".\dotnet-install.ps1 --Version 5.0.100-preview.2.20176.6"
+    - dotnet new -i ./Content'
+    - dotnet --info'
 
-    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new -i ./Content'
-    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" --info'
+    - dotnet new nunit -n CSharpNetCore50 --framework net5.0 -lang c#'
+    - dotnet new nunit -n FSharpNetCore50 --framework net5.0 -lang f#'
+    - dotnet new nunit -n VBasicNetCore50 --framework net5.0 -lang vb'
 
-    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n CSharpNetCore50 --framework net5.0 -lang c#'
-    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n FSharpNetCore50 --framework net5.0 -lang f#'
-    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" new nunit -n VBasicNetCore50 --framework net5.0 -lang vb'
+    - dotnet new nunit -n CSharpNetCore60 --framework net6.0 -lang c#'
+    - dotnet new nunit -n FSharpNetCore60 --framework net6.0 -lang f#'
+    - dotnet new nunit -n VBasicNetCore60 --framework net6.0 -lang vb'
 
   test_script:
-    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" test CSharpNetCore50'
-    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" test FSharpNetCore50'
-    - '"%USERPROFILE%\\AppData\\Local\\Microsoft\\dotnet\\dotnet" test VBasicNetCore50'
+    - dotnet test CSharpNetCore50'
+    - dotnet test FSharpNetCore50'
+    - dotnet test VBasicNetCore50'
+
+    - dotnet test CSharpNetCore60'
+    - dotnet test FSharpNetCore60'
+    - dotnet test VBasicNetCore60'
   artifacts:
     - path: '*.nupkg'

@@ -57,6 +57,10 @@
           "description": "Target netcoreapp3.1"
         },
         {
+          "choice": "net6.0",
+          "description": "Target net6.0"
+        },
+        {
           "choice": "net5.0",
           "description": "Target net5.0"
         },
@@ -110,7 +114,7 @@
         }
       ],
       "replaces": "netcoreapp2.1",
-      "defaultValue": "net5.0"
+      "defaultValue": "net6.0"
     },
     "DotNetFramework": {
       "type": "computed",

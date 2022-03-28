@@ -21,6 +21,7 @@
   "usageExamples": [
     "-f net472",
     "-f netcoreapp2.1",
-    "-f net5.0"
+    "-f net5.0",
+    "-f net6.0"
   ]
 }
