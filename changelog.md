@@ -1,3 +1,14 @@
+27 March 2021, v1.9.0
+---------------------
+
+- remove Travis build
+- add new `--framework` supported parameters:
+    + net6.0
+- update `NUnit3TestAdapter` to v4.2.1 on .NET Core 2.1+
+- update `NUnit` to v3.13.3
+- update `Microsoft.NET.Test.Sdk` to v7.1.0 on .NET 6.0+
+- remove EOL .NET Core frameworks <= .NET Core 3.0
+
 15 April 2020, v1.8.1
 ---------------------
 
